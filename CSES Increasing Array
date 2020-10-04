@@ -1,0 +1,22 @@
+package Introductory_Problems;
+
+import java.util.Scanner;
+
+public class CSES_Increasing_Array {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int prevMax = sc.nextInt();
+		long ans = 0;
+		
+		for(int i= 1 ; i < n ; i++) {
+			int a = sc.nextInt();
+			if(a < prevMax) {
+				ans += prevMax - a;
+			}else prevMax = a;
+		}
+		System.out.println(ans);
+		
+		sc.close();
+	}
+}
