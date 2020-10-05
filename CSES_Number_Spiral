@@ -1,0 +1,22 @@
+package Introductory_Problems;
+
+import java.util.Scanner;
+
+public class CSES_Number_Spiral {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		StringBuilder sb = new StringBuilder();
+		for(int tt = 0 ;tt < t ; tt++) {
+			int x = sc.nextInt() , y = sc.nextInt();
+			long z = Math.max(x, y);
+			long ans = (z -1)* (z -1);
+			if(z % 2 == 1) {
+				ans += y + (z - x);
+			}else ans += x + (z - y);
+			sb.append(ans + "\n");		
+		}
+		System.out.println(sb);
+		sc.close();
+	}
+}
