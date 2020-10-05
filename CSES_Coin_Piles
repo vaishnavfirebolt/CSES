@@ -1,0 +1,28 @@
+package Introductory_Problems;
+
+import java.util.Scanner;
+
+public class CSES_Coin_Piles {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		while(t-- > 0) {
+			int n = sc.nextInt() , m = sc.nextInt();
+			if(m < n) {
+				int temp = n;
+				n = m ; m = temp;
+			}
+			int diff = m - n;
+			if(n - diff >= 0 && (n - diff) % 3 == 0) {
+				System.out.println("YES");
+			}else {
+				System.out.println("NO");
+			}
+		}
+		
+		sc.close();
+	}
+
+}
