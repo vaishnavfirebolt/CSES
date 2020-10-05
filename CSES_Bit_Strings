@@ -1,0 +1,17 @@
+package Introductory_Problems;
+
+import java.util.Scanner;
+
+public class CSES_Bit_Strings {
+	static long mod = (long)1e9 + 7;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		long n = sc.nextInt();
+		long ans = 1;
+		for(int i = 0 ; i < n ; i++) {
+			ans = ans *2 % mod;
+		}
+		System.out.println(ans);
+		sc.close();
+	}
+}
