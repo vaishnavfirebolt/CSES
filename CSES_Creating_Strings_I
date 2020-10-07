@@ -1,0 +1,34 @@
+package Introductory_Problems;
+
+import java.util.*;
+
+public class CSES_Creating_Strings_I {
+	static Set<String> set = new HashSet<>();
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		StringBuilder sb = new StringBuilder();
+		String s = sc.next();
+		perm(s,"");
+		for(String sh : set) {
+			sb.append(sh+"\n");
+		}
+		System.out.println(sb);
+		sc.close();
+		
+		
+	}
+	static int perm(String question , String ans) {
+		//base case
+		if(question.length() == 0) {
+			set.add(ans);
+			return 1;
+		}
+		// for every char we have to call perm
+		int count = 0;
+		for(int i = 0 ; i < question.length() ; i++) {
+			char c = question.charAt(i);
+			count += perm(question.substring(0,i) + question.substring(i+1), ans + c);
+		}
+		return count;
+	}
+}
