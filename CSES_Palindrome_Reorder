@@ -1,0 +1,59 @@
+package Introductory_Problems;
+
+import java.util.*;
+
+public class CSES_Palindrome_Reorder {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		String s = sc.next();
+		sc.close();
+		
+		StringBuilder sb = new StringBuilder();
+		int a[] = new int[26];
+		for(int i =0 ; i< s.length() ; i++) {
+			a[s.charAt(i) - 'A']++;
+		}
+		
+		int odd = 0;
+		for(int i = 0 ; i < 26 ; i++) {
+			if(a[i] % 2 == 1)odd++;
+		}
+		if(odd > 1 ) {
+			System.out.println("NO SOLUTION");
+			return;
+		}
+		ArrayDeque<Character> q = new ArrayDeque<>();
+		for(int i = 0 ; i < 26 ; i++) {
+			if(a[i] % 2 ==1) {
+				for(int j = 0 ; j < a[i]  ; j++) {
+					q.addFirst((char) ('A' + i));
+				}
+			}else {
+				for(int j =0 ; j < a[i]/2 ; j++) {
+					q.addLast((char)('A' + i));
+				}
+			}
+		}
+		for(int i = 0 ; i < 26 ; i++) {
+			if(a[i] % 2 ==1) {
+				
+			}else {
+				for(int j =0 ; j < a[i]/2 ; j++) {
+					q.addFirst((char)('A' + i));
+				}
+			}
+		}
+		for(char ch : q) {
+			sb.append(ch);
+		}
+		System.out.println(sb);
+		
+		
+	
+		
+	}
+
+}
