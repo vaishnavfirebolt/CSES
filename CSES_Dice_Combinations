@@ -1,0 +1,42 @@
+package DP;
+
+import java.util.Scanner;
+
+public class CSES_Dice_Combinations {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		
+		long dp[] = new long[n +1];
+		
+		if(n == 1) {
+			System.out.println(1);
+		}
+		else if( n == 2)System.out.println(2);
+		else if(n == 3)System.out.println(4);
+		else {dp[1] = 1;
+		dp[2] = 2;
+		dp[3] = 4;
+		
+		for(int i = 4 ; i <= n ; i++) {
+			for(int j = 1 ; j <= 6 ; j++) {
+				if(i - j >0) {
+					dp[i] += dp[i - j];
+				}
+			}
+			if(i < 7) {
+				dp[i]++;
+			}
+		}
+		
+		System.out.println(dp[n]);	
+		
+		}
+		
+		sc.close();
+		
+	}
+
+}
