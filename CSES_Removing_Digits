@@ -1,0 +1,31 @@
+package DP;
+
+import java.util.*;
+
+public class CSES_Removing_Digits {
+	
+	static long dp[];
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		
+		int n =    sc.nextInt();
+		dp = new long[n+20];
+		Arrays.fill(dp, Integer.MAX_VALUE);
+		dp[n] = 0;
+		
+		for(int i = n ; i >= 0 ; i--) {
+			int j = i;
+			while(j > 0) {
+				int k = j % 10;
+				dp[i - k] = Math.min(dp[i-k], dp[i] + 1);
+				j = j /10;
+			}
+		}
+		
+		System.out.println(dp[0]);
+		sc.close();
+	}
+	
+}
