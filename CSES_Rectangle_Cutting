@@ -1,0 +1,36 @@
+package DP;
+
+import java.util.Scanner;
+
+public class CSES_Rectangle_Cutting {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println(go(sc.nextInt(),sc.nextInt()));
+		sc.close();
+	}
+	static int go(int i , int j) {
+		
+		int dp[][] = new int[i+1][j+1];
+		
+		for(int h = 1 ; h <= i ; h++) {
+			for(int w = 1; w <= j ; w++) {
+				if(h == w)dp[h][w] = 0;
+				else {
+					int ans = Integer.MAX_VALUE;
+					// try all cuts
+					for(int a = 1; a < h ; a++) {
+						ans = Math.min(ans, 1 + dp[h - a][w] + dp[a][w]);
+					}
+					for(int a = 1; a < w ; a++) {
+						ans = Math.min(ans, 1 + dp[h][w - a] + dp[h][a]);
+					}
+					dp[h][w] = ans;
+				}
+			}
+		}
+		return dp[i][j];
+		
+	}
+}
